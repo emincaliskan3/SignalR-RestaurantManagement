@@ -33,21 +33,27 @@
                                 <input type="email" class="form-control" placeholder="Email Adresiniz" asp-for="Mail"/>
                             </div>
                             <div>
-                                <select class="form-control nice-select wide">
+                                <select asp-for="PersonCount" class="form-control nice-select wide">
                                     <option value="" disabled selected>
                                         Kaç kişisiniz?
                                     </option>
-                                    <option value="">
+                                    <option value="1">
+                                        1
+                                    </option>
+                                    <option value="2">
                                         2
                                     </option>
-                                    <option value="">
+                                    <option value="3">
                                         3
                                     </option>
-                                    <option value="">
+                                    <option value="4">
                                         4
                                     </option>
-                                    <option value="">
+                                    <option value="5">
                                         5
+                                    </option>
+                                    <option value="6">
+                                        6++
                                     </option>
                                 </select>
                             </div>
