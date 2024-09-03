@@ -27,6 +27,11 @@ namespace SignalR.BusinessLayer.Concrete
 			_notificationDal.Delete(entity);
 		}
 
+		public List<Notification> TGetAllNotificationsByFalse()
+		{
+			return _notificationDal.GetAllNotificationsByFalse();
+		}
+
 		public Notification TGetByID(int id)
 		{
 			return _notificationDal.GetByID(id);
