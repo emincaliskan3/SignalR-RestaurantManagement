@@ -11,13 +11,12 @@ connection.on("ReceiveMessage", function (user, message) {
     span.style.fontWeight = "bold";
     span.textContent = user;
     li.appendChild(span);
-    li.innerHTML += ` :${message}- ${currentHour}:${currentMinute}`;
+    li.innerHTML += ` :${message} - ${currentHour}:${currentMinute}`;
     document.getElementById("messagelist").appendChild(li);
 });
 
 connection.start().then(function () {
     document.getElementById("sendbutton").disabled = false;
-
 }).catch(function (err) {
     return console.error(err.toString());
 });
@@ -25,7 +24,7 @@ connection.start().then(function () {
 document.getElementById("sendbutton").addEventListener("click", function (event) {
     var user = document.getElementById("userinput").value;
     var message = document.getElementById("messageinput").value;
-    connection.invoke("ReceiveMessage", user, message).catch(function (err) {
+    connection.invoke("SendMessage", user, message).catch(function (err) {
         return console.error(err.toString());
     });
     event.preventDefault();
