@@ -9,37 +9,47 @@ using System.Threading.Tasks;
 
 namespace SignalR.BusinessLayer.Concrete
 {
-    public class DiscountManager : IDiscountService
-    {
-        private readonly IDiscountDal _discountDal;
-        public DiscountManager(IDiscountDal discountDal)
-        {
-            _discountDal = discountDal;
-        }
+	public class DiscountManager : IDiscountService
+	{
+		private readonly IDiscountDal _discountDal;
+		public DiscountManager(IDiscountDal discountDal)
+		{
+			_discountDal = discountDal;
+		}
 
-        public void TAdd(Discount entity)
-        {
-           _discountDal.Add(entity);
-        }
+		public void TAdd(Discount entity)
+		{
+			_discountDal.Add(entity);
+		}
 
-        public void TDelete(Discount entity)
-        {
-            _discountDal.Delete(entity);
-        }
+		public void TChangeStatusToFalse(int id)
+		{
+			_discountDal.ChangeStatusToFalse(id);
+		}
 
-        public Discount TGetByID(int id)
-        {
-            return _discountDal.GetByID(id);
-        }
+		public void TChangeStatusToTrue(int id)
+		{
+			_discountDal.ChangeStatusToTrue(id);
+		}
 
-        public List<Discount> TGetListAll()
-        {
-           return _discountDal.GetListAll();
-        }
+		public void TDelete(Discount entity)
+		{
+			_discountDal.Delete(entity);
+		}
 
-        public void TUpdate(Discount entity)
-        {
-            _discountDal.Update(entity);
-        }
-    }
+		public Discount TGetByID(int id)
+		{
+			return _discountDal.GetByID(id);
+		}
+
+		public List<Discount> TGetListAll()
+		{
+			return _discountDal.GetListAll();
+		}
+
+		public void TUpdate(Discount entity)
+		{
+			_discountDal.Update(entity);
+		}
+	}
 }
