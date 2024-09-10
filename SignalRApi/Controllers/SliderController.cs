@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SignalR.BusinessLayer.Abstract;
-using SignalR.DtoLayer.DiscountDto;
-using SignalR.DtoLayer.FeatureDto;
+using SignalR.DtoLayer.SliderDto;
 using SignalR.EntityLayer.Entities;
 
 namespace SignalRApi.Controllers
@@ -24,51 +22,51 @@ namespace SignalRApi.Controllers
 		[HttpGet]
 		public IActionResult SliderList()
 		{
-			var value = _mapper.Map<List<ResultFeatureDto>>(_sliderService.TGetListAll());
+			var value = _mapper.Map<List<ResultSliderDto>>(_sliderService.TGetListAll());
 			return Ok(value);
 		}
 		[HttpPost]
-		public IActionResult CreateSlider(CreateFeatureDto createFeatureDto)
+		public IActionResult CreateSlider(CreateSliderDto createSliderDto)
 		{
-			_featureService.TAdd(new Feature()
+			_sliderService.TAdd(new Slider()
 			{
-				Description1 = createFeatureDto.Description1,
-				Description2 = createFeatureDto.Description2,
-				Description3 = createFeatureDto.Description3,
-				Title1 = createFeatureDto.Title1,
-				Title2 = createFeatureDto.Title2,
-				Title3 = createFeatureDto.Title3,
+				Description1 = createSliderDto.Description1,
+				Description2 = createSliderDto.Description2,
+				Description3 = createSliderDto.Description3,
+				Title1 = createSliderDto.Title1,
+				Title2 = createSliderDto.Title2,
+				Title3 = createSliderDto.Title3
 
 			});
 			return Ok("Öne Çıkan Bilgisi Eklendi");
 
 		}
 		[HttpDelete("{id}")]
-		public IActionResult DeleteFeature(int id)
+		public IActionResult DeleteSlider(int id)
 		{
-			var value = _featureService.TGetByID(id);
-			_featureService.TDelete(value);
+			var value = _sliderService.TGetByID(id);
+			_sliderService.TDelete(value);
 			return Ok("Öne Çıkan Bilgisi Silindi");
 		}
 		[HttpGet("{id}")]
-		public IActionResult GetFeature(int id)
+		public IActionResult GetSlider(int id)
 		{
-			var value = _featureService.TGetByID(id);
+			var value = _sliderService.TGetByID(id);
 
 			return Ok(value);
 		}
 		[HttpPut]
-		public IActionResult UpdateFeature(UpdateFeatureDto updateFeatureDto)
+		public IActionResult UpdateSlider(UpdateSliderDto updateSliderDto)
 		{
-			_featureService.TUpdate(new Feature()
+			_sliderService.TUpdate(new Slider()
 			{
-				Description1 = updateFeatureDto.Description1,
-				Description2 = updateFeatureDto.Description2,
-				Description3 = updateFeatureDto.Description3,
-				Title1 = updateFeatureDto.Title1,
-				Title2 = updateFeatureDto.Title2,
-				Title3 = updateFeatureDto.Title3,
-				FeatureID = updateFeatureDto.FeatureID
+				Description1 = updateSliderDto.Description1,
+				Description2 = updateSliderDto.Description2,
+				Description3 = updateSliderDto.Description3,
+				Title1 = updateSliderDto.Title1,
+				Title2 = updateSliderDto.Title2,
+				Title3 = updateSliderDto.Title3,
+				SliderID = updateSliderDto.SliderID
 
 			});
 			return Ok("Öne Çıkan Alan Bilgisi Güncellendi");
