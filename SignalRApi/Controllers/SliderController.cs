@@ -10,25 +10,25 @@ namespace SignalRApi.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class FeatureController : ControllerBase
+	public class SliderController : ControllerBase
 	{
-		private readonly IFeatureService _featureService;
+		private readonly ISliderService _sliderService;
 		private readonly IMapper _mapper;
 
-		public FeatureController(IFeatureService featureService, IMapper mapper)
+		public SliderController(ISliderService sliderService, IMapper mapper)
 		{
-			_featureService = featureService;
+			_sliderService = sliderService;
 			_mapper = mapper;
 		}
 
 		[HttpGet]
-		public IActionResult FeatureList()
+		public IActionResult SliderList()
 		{
-			var value = _mapper.Map<List<ResultFeatureDto>>(_featureService.TGetListAll());
+			var value = _mapper.Map<List<ResultFeatureDto>>(_sliderService.TGetListAll());
 			return Ok(value);
 		}
 		[HttpPost]
-		public IActionResult CreateFeature(CreateFeatureDto createFeatureDto)
+		public IActionResult CreateSlider(CreateFeatureDto createFeatureDto)
 		{
 			_featureService.TAdd(new Feature()
 			{
