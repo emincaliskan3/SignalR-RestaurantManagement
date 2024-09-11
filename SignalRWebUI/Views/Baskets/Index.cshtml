@@ -2,8 +2,9 @@
 @{
     Layout = null;
     int count = 0;
+    decimal totalPriceWithCount = 0;
     decimal basketTotalPrice = 0;
-    decimal basetTotalPriceWithTax = 0;
+    decimal basketTotalPriceWithTax = 0;
     decimal tax = 0;
 }
 
@@ -43,19 +44,25 @@
                             <th>Sil</th>
                         </tr>
                     </thead>
-                    @foreach(var item in Model)
+                    @foreach(var group in Model.GroupBy(x=>x.ProductName))
                     {
+                        var item = group.First();
+                        var itemCount = group.Count();
+
                         basketTotalPrice = Model.Sum(x => x.Price);
                         tax = basketTotalPrice / 100 * 10;
-                        basetTotalPriceWithTax = basketTotalPrice + tax;
+                        basketTotalPriceWithTax = basketTotalPrice + tax;
                         count++;
+
+                        totalPriceWithCount = item.Price * itemCount;
+
                         <tbody class="align-middle">
                             <tr>
                                 <td class="align-middle">@count</td>
                                 <td class="align-middle">@item.ProductName</td>
-                                <td class="align-middle">@item.Count</td>
+                                <td class="align-middle">@itemCount</td>
                                 <td class="align-middle">@item.Price</td>
-                                <td class="align-middle">@item.TotalPrice</td>
+                                <td class="align-middle">@totalPriceWithCount</td>
                                 <td class="align-middle btn-delete"><a class="btn btn-sm btn-danger" href="/Baskets/DeleteBasket/@item.BasketID"><i class="fa fa-times"></i></a></td>
                             </tr>
                         </tbody>
@@ -89,7 +96,7 @@
                     <div class="pt-2">
                         <div class="d-flex justify-content-between mt-2">
                             <h5>Toplam Tutar</h5>
-                            <h5><span id="totalpricewithkdv">@basetTotalPriceWithTax</span>₺</h5>
+                            <h5><span id="totalpricewithkdv">@basketTotalPriceWithTax</span>₺</h5>
                         </div>
                         <br />
                         <button id="btnchecked" class="btn btn-block btn-warning font-weight-bold my-3">Siparişi Tamamla</button>
