@@ -1,10 +1,6 @@
-﻿Default Kontrolü
-ProgressBar İstatistik
-Order Sayfası UI
+﻿ProgressBar İstatistik
 QR Kod Sistemi
-Menü Sayfası Kontrolü UI
 LogOut
 Ayarlar
-Uygulama Seviyesinde Authorize
 Mail
 Arama işlemi - Search
