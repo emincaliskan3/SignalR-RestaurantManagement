@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MailKit.Net.Smtp;
+using Microsoft.AspNetCore.Mvc;
 using MimeKit;
 using SignalRWebUI.Dtos.MailDtos;
 
@@ -25,6 +26,16 @@ namespace SignalRWebUI.Controllers
             var bodyBuilder = new BodyBuilder();
             bodyBuilder.TextBody = createMailDto.Body;
             mimeMessage.Body = bodyBuilder.ToMessageBody();
+
+            mimeMessage.Subject = createMailDto.Subject;
+
+            SmtpClient client = new SmtpClient();
+            client.Connect("smtp.gmail.com", 587, false);
+            client.Authenticate("mail adresi", "key");
+
+            client.Send(mimeMessage);
+            client.Disconnect(true);
+
 
             return RedirectToAction("Index", "Category");
         }
