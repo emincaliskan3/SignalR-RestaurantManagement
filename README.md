@@ -13,6 +13,7 @@ This application aims to enhance restaurant operations by allowing users to plac
 - **Real-Time Admin Panel:** Admins can instantly approve or reject orders and reservations with real-time notifications powered by SignalR.
 - **Email Notifications:** Automated emails are sent to notify customers and admins about status changes.
 - **Secure Login:** User authentication and security are managed using **ASP.NET Identity**.
+- **QR Code Generation:** Admins can generate QR codes for tables and orders within the admin panel.
 
 ## 🛠️ Technical Details
 
@@ -42,6 +43,7 @@ The project employs an **N-Tier Architecture** to ensure maintainability and sca
 - **Live Notifications:** Receive real-time updates on orders and reservations
 - **Discount Management:** Apply and manage discounts on products
 - **Real-Time Statistics:** Monitor live statistics for orders, tables, and revenue
+- **QR Code Generation:** Generate QR codes for tables and orders through the admin panel
 
 ## ✨ Highlights
 
@@ -50,10 +52,12 @@ The project employs an **N-Tier Architecture** to ensure maintainability and sca
 - **Email Notifications:** Automatic emails for updates on orders and reservations
 - **Discount Feature:** Easily apply discounts to menu items
 - **Secure Authentication:** Robust security features powered by ASP.NET Identity
+- **Admin QR Code Generation:** QR codes can be created by admins for table reservations and orders
 
 ## 🧩 Technologies Used
 
 - **Backend:** ASP.NET Core 6.0, ASP.NET Core Web API, SignalR, Entity Framework, MSSQL
 - **Frontend:** HTML, CSS, JavaScript, Bootstrap, Ajax
-- **Utilities:** AutoMapper, PagedList, MailKit
+- **Utilities:** AutoMapper, MailKit
 - **Architecture:** N-Tier Architecture, DTO Pattern
+
