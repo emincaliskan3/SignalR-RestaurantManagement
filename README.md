@@ -93,3 +93,7 @@ Aşağıda projenizin bazı ekran görüntüleri bulunmaktadır:
 ![3](https://github.com/user-attachments/assets/607cf164-fdaa-497b-a234-6d2528d7e960)
 ![28](https://github.com/user-attachments/assets/692a0257-e23b-42f6-8ec6-c67f2598c64b)
 ![29](https://github.com/user-attachments/assets/d00e8221-0154-49b3-a4dd-69b2274bb030)
+![31](https://github.com/user-attachments/assets/521a3d99-f8fb-4e8a-8886-fd58fa079507)
+![33](https://github.com/user-attachments/assets/4aa4932f-7631-4b80-bbea-566f04ea9ef7)
+![32](https://github.com/user-attachments/assets/9202b7bb-17a0-4b18-b21c-c04237bb07c5)
+![34](https://github.com/user-attachments/assets/343a68df-c685-4db8-9ab2-a5c9abb30db9)
