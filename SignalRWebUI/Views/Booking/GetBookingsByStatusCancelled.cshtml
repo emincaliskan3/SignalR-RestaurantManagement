@@ -20,7 +20,7 @@
                     $("#connstatus").text(connection.state);
                     setInterval(() => {
                         connection.invoke("GetCancelledBookingList").catch(err => console.error(err)); // Hata yakalama
-                    }, 5000);
+                    }, 1000);
                 }).catch((err) => {
                     console.error(err); // Hata yakalama
                 });
