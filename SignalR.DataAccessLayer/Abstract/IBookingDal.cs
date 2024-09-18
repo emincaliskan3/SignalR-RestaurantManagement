@@ -7,9 +7,14 @@ using System.Threading.Tasks;
 
 namespace SignalR.DataAccessLayer.Abstract
 {
-	public interface IBookingDal : IGenericDal<Booking>
-	{
-		void BookingStatusApproved(int id);
-		void BookingStatusCancelled(int id);
-	}
+    public interface IBookingDal : IGenericDal<Booking>
+    {
+        void BookingStatusApproved(int id);
+        void BookingStatusCancelled(int id);
+        void BookingStatusPending(int id);
+        List<Booking> GetBookingsByStatusApproved();
+        List<Booking> GetBookingsByStatusCancelled();
+        List<Booking> GetBookingsByStatusPending();
+
+    }
 }

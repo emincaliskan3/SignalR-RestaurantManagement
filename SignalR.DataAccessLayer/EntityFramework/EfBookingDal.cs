@@ -1,4 +1,5 @@
-﻿using SignalR.DataAccessLayer.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using SignalR.DataAccessLayer.Abstract;
 using SignalR.DataAccessLayer.Concrete;
 using SignalR.DataAccessLayer.Repostories;
 using SignalR.EntityLayer.Entities;
@@ -20,7 +21,7 @@ namespace SignalR.DataAccessLayer.EntityFramework
         {
             using var context = new SignalRContext();
             var values = context.Bookings.Find(id);
-            values.Description = "Rezervasyon Onaylandı";
+            values.Status = "Rezervasyon Onaylandı";
             context.SaveChanges();
         }
 
@@ -28,8 +29,40 @@ namespace SignalR.DataAccessLayer.EntityFramework
         {
             using var context = new SignalRContext();
             var values = context.Bookings.Find(id);
-            values.Description = "Rezervasyon İptal Edildi";
+            values.Status = "Rezervasyon İptal Edildi";
             context.SaveChanges();
+        }
+        public void BookingStatusPending(int id)
+        {
+            using var context = new SignalRContext();
+            var values = context.Bookings.Find(id);
+            values.Status = "Rezervasyon Bekletiliyor";
+            context.SaveChanges();
+        }
+
+        public List<Booking> GetBookingsByStatusApproved()
+        {
+            using var context = new SignalRContext();
+            return context.Bookings
+              .Where(b => b.Status == "Rezervasyon Onaylandı")
+              .ToList();
+
+        }
+
+        public List<Booking> GetBookingsByStatusCancelled()
+        {
+            using var context = new SignalRContext();
+            return context.Bookings
+              .Where(b => b.Status == "Rezervasyon İptal Edildi")
+              .ToList();
+        }
+
+        public List<Booking> GetBookingsByStatusPending()
+        {
+            using var context = new SignalRContext();
+            return context.Bookings
+              .Where(b => b.Status == "Rezervasyon Bekletiliyor")
+              .ToList();
         }
     }
 }

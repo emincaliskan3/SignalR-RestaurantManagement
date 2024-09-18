@@ -4,12 +4,13 @@ using SignalR.EntityLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SignalR.BusinessLayer.Concrete
 {
-    
+
     public class AboutManager : IAboutService
     {
         private readonly IAboutDal _aboutDal;
@@ -21,12 +22,12 @@ namespace SignalR.BusinessLayer.Concrete
 
         public void TAdd(About entity)
         {
-           _aboutDal.Add(entity);
+            _aboutDal.Add(entity);
         }
 
         public void TDelete(About entity)
         {
-           _aboutDal.Delete(entity);
+            _aboutDal.Delete(entity);
         }
 
         public About TGetByID(int id)
@@ -39,9 +40,14 @@ namespace SignalR.BusinessLayer.Concrete
             return _aboutDal.GetListAll();
         }
 
+        public List<About> TGetListByFilter(Expression<Func<About, bool>> where)
+        {
+            throw new NotImplementedException();
+        }
+
         public void TUpdate(About entity)
         {
-           _aboutDal.Update(entity);
+            _aboutDal.Update(entity);
         }
     }
 }

@@ -71,5 +71,33 @@ namespace SignalRApi.Controllers
             _bookingService.TBookingStatusCancelled(id);
             return Ok("Rezervasyon Açıklaması Değiştirildi");
         }
+        [HttpGet("BookingStatusPending/{id}")]
+        public IActionResult BookingStatusPending(int id)
+        {
+            _bookingService.TBookingStatusPending(id);
+            return Ok("Rezervasyon Beklemeye Alındı");
+        }
+
+        [HttpGet("GetBookingsByStatusApproved")]
+        public IActionResult GetBookingsByStatusApproved()
+        {
+            var values = _bookingService.TGetBookingsByStatusApproved();
+            return Ok(_mapper.Map<List<ResultBookingDto>>(values));
+        }
+
+        [HttpGet("GetBookingsByStatusCancelled")]
+        public IActionResult GetBookingsByStatusCancelled()
+        {
+            var values = _bookingService.TGetBookingsByStatusCancelled();
+            return Ok(_mapper.Map<List<ResultBookingDto>>(values));
+        }
+
+        [HttpGet("GetBookingsByStatusPending")]
+        public IActionResult GetBookingsByStatusPending()
+        {
+            var values = _bookingService.TGetBookingsByStatusPending();
+            return Ok(_mapper.Map<List<ResultBookingDto>>(values));
+        }
+
     }
 }

@@ -7,9 +7,14 @@ using System.Threading.Tasks;
 
 namespace SignalR.BusinessLayer.Abstract
 {
-	public interface IBookingService : IGenericService<Booking>
-	{
-		void TBookingStatusApproved(int id);
-		void TBookingStatusCancelled(int id);
-	}
+    public interface IBookingService : IGenericService<Booking>
+    {
+        void TBookingStatusApproved(int id);
+        void TBookingStatusCancelled(int id);
+        void TBookingStatusPending(int id);
+
+        List<Booking> TGetBookingsByStatusApproved();
+        List<Booking> TGetBookingsByStatusCancelled();
+        List<Booking> TGetBookingsByStatusPending();
+    }
 }

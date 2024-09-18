@@ -35,7 +35,7 @@ namespace SignalRWebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateBooking(CreateBookingDto createBookingDto)
         {
-            createBookingDto.Description = "Onay Bekliyor";
+            createBookingDto.Status = "Onay Bekliyor";
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createBookingDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
@@ -97,5 +97,27 @@ namespace SignalRWebUI.Controllers
             await client.GetAsync($"https://localhost:7193/api/Booking/BookingStatusCancelled/{id}");
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> BookingStatusPending(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            await client.GetAsync($"https://localhost:7193/api/Booking/BookingStatusPending/{id}");
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> GetBookingStatusApproved()
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:7193/api/Booking/GetBookingsByStatusApproved/");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultBookingDto>>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+
+
     }
 }

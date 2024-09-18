@@ -21,6 +21,13 @@
 									<label for="Name">Masa Adını Giriniz</label>
 									<input type="text" class="form-control" asp-for="Name" id="Name">
 								</div>
+								<div class="form-group">
+									<label for="status">Masa Durumu</label>
+									<select class="form-control" asp-for="Status" id="status">
+										<option value="true">Dolu</option>
+										<option value="false">Boş</option>
+									</select>
+								</div>
 							</div>
 							<div class="card-action">
 								<button class="btn btn-primary">Masa Ekle</button>
