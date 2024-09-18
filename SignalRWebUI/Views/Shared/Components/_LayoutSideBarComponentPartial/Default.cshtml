@@ -56,6 +56,37 @@
 				</a>
 			</li>
 			<li class="nav-item">
+				<a class="collapse" data-toggle="collapse" href="#bookingsSubmenu" aria-expanded="false">
+					<i class="la la-bell"></i>
+					<p>Rezervasyonlar</p>
+					<span class="caret"></span>
+				</a>
+				<div class="collapse" id="bookingsSubmenu">
+					<ul class="nav">
+						<li>
+							<a href="/Booking/Index/">
+								<span class="link-collapse">Rezervasyonlar</span>
+							</a>
+						</li>
+						<li>
+							<a href="/Booking/GetBookingStatusApproved/">
+								<span class="link-collapse">Onaylanan Rezervasyonlar</span>
+							</a>
+						</li>
+						<li>
+							<a href="/Booking/GetBookingsByStatusCancelled/">
+								<span class="link-collapse">İptal Edilen Rezervasyonlar</span>
+							</a>
+						</li>
+						<li>
+							<a href="/Booking/GetBookingsByStatusPending/">
+								<span class="link-collapse">Bekleyen Rezervasyonlar</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li class="nav-item">
 				<a href="/Category/Index/">
 					<i class="la la-keyboard-o"></i>
 					<p>Kategoriler</p>
@@ -73,12 +104,7 @@
 					<p>Hakkımızda</p>
 				</a>
 			</li>
-			<li class="nav-item">
-				<a href="/Booking/Index/">
-					<i class="la la-bell"></i>
-					<p>Rezervasyonlar</p>
-				</a>
-			</li>
+			
 			<li class="nav-item">
 				<a href="/Contact/Index/">
 					<i class="la la-phone-square"></i>

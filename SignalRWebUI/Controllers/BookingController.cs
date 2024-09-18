@@ -118,6 +118,32 @@ namespace SignalRWebUI.Controllers
             return View();
         }
 
+        public async Task<IActionResult> GetBookingsByStatusCancelled()
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:7193/api/Booking/GetBookingsByStatusCancelled/");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultBookingDto>>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> GetBookingsByStatusPending()
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:7193/api/Booking/GetBookingsByStatusPending/");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultBookingDto>>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+
 
     }
 }

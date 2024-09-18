@@ -124,6 +124,18 @@ namespace SignalRApi.Hubs
             await Clients.All.SendAsync("ReceiveApprovedBookingList", values); // İstemcilere gönderir
         }
 
+        public async Task GetCancelledBookingList()
+        {
+            var values = _bookingService.TGetBookingsByStatusCancelled(); // Onaylı rezervasyonları alır
+            await Clients.All.SendAsync("ReceiveCancelledBookingList", values); // İstemcilere gönderir
+        }
+
+        public async Task GetPendingBookingList()
+        {
+            var values = _bookingService.TGetBookingsByStatusPending(); // Onaylı rezervasyonları alır
+            await Clients.All.SendAsync("ReceivePendingBookingList", values); // İstemcilere gönderir
+        }
+
 
         public async Task SendNotification()
         {
