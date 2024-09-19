@@ -13,16 +13,16 @@
     <div class="container-fluid">
         <script type="text/javascript">
             $(document).ready(() => {
-                var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7193/SignalRHub").build(); // URL'yi kontrol edin
+                var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7193/SignalRHub").build(); 
                 $("#connstatus").text(connection.state);
 
                 connection.start().then(() => {
                     $("#connstatus").text(connection.state);
                     setInterval(() => {
-                        connection.invoke("GetPendingBookingList").catch(err => console.error(err)); // Hata yakalama
+                        connection.invoke("GetPendingBookingList").catch(err => console.error(err)); 
                     }, 1000);
                 }).catch((err) => {
-                    console.error(err); // Hata yakalama
+                    console.error(err); 
                 });
 
                 connection.on("ReceivePendingBookingList", (value) => {
