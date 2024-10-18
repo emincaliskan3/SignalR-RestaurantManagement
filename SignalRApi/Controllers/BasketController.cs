@@ -19,7 +19,7 @@ namespace SignalRApi.Controllers
         {
             _basketService = basketService;
         }
-        [HttpGet]
+        [HttpGet("GetBasketByMenuTableNumber")]
         public IActionResult GetBasketByMenuTableNumber(int id)
         {
             var values = _basketService.TGetBasketByMenuTableNumber(id);
@@ -61,9 +61,25 @@ namespace SignalRApi.Controllers
         public IActionResult DeleteBasket(int id)
         {
             var value = _basketService.TGetByID(id);
-            _basketService.TDelete(value);
-            return Ok("Sepetteki Seçilen Ürün Silindi");
+            if (value != null)
+            {
+                _basketService.TDelete(value);
+
+                // Sepetin boş olup olmadığını kontrol et
+                var remainingItems = _basketService.TGetBasketByMenuTableNumber(value.MenuTableID);
+
+                if (remainingItems.Count == 0)
+                {
+                    // Sepet boşsa, masa durumunu false yap
+                    _basketService.TChangeMenuTableStatusToFalse(value.MenuTableID);
+                }
+
+                return Ok("Sepetteki Seçilen Ürün Silindi ve Masa Güncellendi");
+            }
+
+            return NotFound("Silinecek ürün bulunamadı");
         }
+
 
 
     }

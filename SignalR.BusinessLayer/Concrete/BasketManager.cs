@@ -23,6 +23,16 @@ namespace SignalR.BusinessLayer.Concrete
             _basketDal.Add(entity);
         }
 
+        public void TChangeMenuTableStatusToFalse(int menuTableId)
+        {
+            _basketDal.ChangeMenuTableStatusToFalse(menuTableId);
+        }
+
+        public void TChangeMenuTableStatusToTrue(int menuTableId)
+        {
+            _basketDal.ChangeMenuTableStatusToTrue(menuTableId);
+        }
+
         public void TDelete(Basket entity)
         {
             _basketDal.Delete(entity);

@@ -10,5 +10,7 @@ namespace SignalR.DataAccessLayer.Abstract
     public interface IBasketDal : IGenericDal<Basket>
     {
         List<Basket> GetBasketByMenuTableNumber(int id);
+        void ChangeMenuTableStatusToFalse(int menuTableId);
+        void ChangeMenuTableStatusToTrue(int menuTableId);
     }
 }

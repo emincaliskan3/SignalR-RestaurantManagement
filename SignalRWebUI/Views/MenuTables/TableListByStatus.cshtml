@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "TableListByStatus";
     Layout = "~/Views/AdminLayout/Index.cshtml";
-    
+
 }
 
 <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
@@ -34,34 +34,34 @@
                     let tablehtml = `<div class="row">`;
                     $.each(value, (index, item) => {
                         if (item.status == true) {
-            color="card card-stats card-success";
-            status = "Masa Dolu";
+                            color = "card card-stats card-danger";
+                            status = "Masa Dolu";
                         }
                         else {
-            color="card card-stats card-danger";
-            status = "Masa Boş";
+                            color = "card card-stats card-success";
+                            status = "Masa Boş";
                         }
                         tablehtml += `<div class="col-md-3">
-                                            <div class="${color}">
-                                                <div class="card-body">
-                                                    <div class="row">
-                                                        <div class="col-5">
-                                                            <div class="icon-big text-center">
-                                                                <i class="la la-certificate"></i>
+                                                        <div class="${color}">
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-5">
+                                                                        <div class="icon-big text-center">
+                                                                            <i class="la la-certificate"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-7 d-flex align-items-center">
+                                                                        <div class="numbers">
+                                                                            <p class="card-category">${item.name}</p>
+                                                                            <h4 class="card-title">${status}</h4>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-7 d-flex align-items-center">
-                                                            <div class="numbers">
-                                                                <p class="card-category">${item.name}</p>
-                                                                <h4 class="card-title">${status}</h4>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>`
+                                                    </div>`
                     });
-                                tablehtml += `</div>`;
+                    tablehtml += `</div>`;
                     $("#statuslist").html(tablehtml);
                 });
 

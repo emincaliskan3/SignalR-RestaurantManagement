@@ -44,6 +44,12 @@ namespace SignalRWebUI.Controllers
             var jsonData = JsonConvert.SerializeObject(createBasketDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var responseMessage = await client.PostAsync("https://localhost:7193/api/Basket", stringContent);
+
+            var client2 = _httpClientFactory.CreateClient();
+            //var jsonData2 = JsonConvert.SerializeObject(updateCategoryDto);
+            //StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            await client2.GetAsync("https://localhost:7193/api/MenuTables/ChangeMenuTableStatusToTrue?id=" + menuTableId);
+
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");

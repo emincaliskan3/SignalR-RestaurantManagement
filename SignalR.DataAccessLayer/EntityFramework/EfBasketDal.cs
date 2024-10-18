@@ -3,11 +3,6 @@ using SignalR.DataAccessLayer.Abstract;
 using SignalR.DataAccessLayer.Concrete;
 using SignalR.DataAccessLayer.Repostories;
 using SignalR.EntityLayer.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SignalR.DataAccessLayer.EntityFramework
 {
@@ -15,6 +10,28 @@ namespace SignalR.DataAccessLayer.EntityFramework
     {
         public EfBasketDal(SignalRContext context) : base(context)
         {
+        }
+
+        public void ChangeMenuTableStatusToFalse(int menuTableId)
+        {
+            using var context = new SignalRContext();
+            var table = context.MenuTables.FirstOrDefault(x => x.MenuTableID == menuTableId);
+            if (table != null)
+            {
+                table.Status = false;
+                context.SaveChanges();
+            }
+        }
+
+        public void ChangeMenuTableStatusToTrue(int menuTableId)
+        {
+            using var context = new SignalRContext();
+            var table = context.MenuTables.FirstOrDefault(x => x.MenuTableID == menuTableId);
+            if (table != null)
+            {
+                table.Status = true;
+                context.SaveChanges();
+            }
         }
 
         public List<Basket> GetBasketByMenuTableNumber(int id)
