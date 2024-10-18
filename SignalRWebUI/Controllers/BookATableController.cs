@@ -15,29 +15,14 @@ namespace SignalRWebUI.Controllers
             _httpClientFactory = httpClientFactory;
         }
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync("https://localhost:7193/api/Contact");
-            response.EnsureSuccessStatusCode();
-            string responseBody = await response.Content.ReadAsStringAsync();
-            JArray item = JArray.Parse(responseBody);
-            string value = item[0]["location"].ToString();
-            ViewBag.Location = value;
+
             return View();
         }
         [HttpPost]
         public async Task<IActionResult> Index(CreateBookingDto createBookingDto)
         {
-            HttpClient client2 = new HttpClient();
-            HttpResponseMessage response = await client2.GetAsync("https://localhost:7193/api/Contact");
-            response.EnsureSuccessStatusCode();
-            string responseBody = await response.Content.ReadAsStringAsync();
-            JArray item = JArray.Parse(responseBody);
-            string value = item[0]["location"].ToString();
-            ViewBag.location = value;
-
-
 
             createBookingDto.Status = "Onay Bekliyor";
 
@@ -52,7 +37,7 @@ namespace SignalRWebUI.Controllers
             }
             else
             {
-                var errorContent = await response.Content.ReadAsStringAsync();
+                var errorContent = await responseMessage.Content.ReadAsStringAsync();
                 ModelState.AddModelError(string.Empty, errorContent);
                 return View();
             }

@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using SignalR.DtoLayer.BookingDto;
 
+
 namespace SignalR.BusinessLayer.ValidationRules.BookingValidations
 {
     public class CreateBookingValidation : AbstractValidator<CreateBookingDto>
